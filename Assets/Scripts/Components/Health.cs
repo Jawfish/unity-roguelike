@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using Effects;
+using UnityEngine;
 
 namespace Components
 {
     public class Health : MonoBehaviour
     {
         [SerializeField] private int maxHealth;
+
         private int currentHealth;
 
         public int CurrentHealth
@@ -38,10 +42,11 @@ namespace Components
 
         private void Awake()
         {
-            if ( MaxHealth <= 0)
+            if (MaxHealth <= 0)
             {
                 Debug.LogError($"Instantiated actor {name} with {MaxHealth} health");
             }
+
             CurrentHealth = MaxHealth;
         }
 
@@ -77,6 +82,11 @@ namespace Components
             {
                 CurrentHealth = 0;
             }
+        }
+
+        public void ApplyDamage(int amount, EffectDamage.DamageTypes type)
+        {
+            Decrease(amount);
         }
     }
 }

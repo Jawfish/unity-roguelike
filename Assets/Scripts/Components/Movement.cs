@@ -1,4 +1,5 @@
 ﻿using System;
+using Engine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,6 +9,8 @@ namespace Components
     public class Movement : MonoBehaviour
     {
         [SerializeField] private float moveSpeed;
+        [SerializeField] private bool ignoreTimescale;
+        
         private Rigidbody2D rb;
 
         private float MoveSpeed
@@ -23,7 +26,14 @@ namespace Components
 
         public void Move(Vector2 vector)
         {
-            rb.velocity = vector * moveSpeed;
+            if (ignoreTimescale)
+            {
+                rb.velocity = vector * moveSpeed;
+            }
+            else
+            {
+                rb.velocity = vector * (moveSpeed * TimeScale.Instance.Current);
+            }
         }
     }
 }
