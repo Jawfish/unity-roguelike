@@ -5,23 +5,22 @@ using UnityEngine;
 
 namespace Actors
 {
-    [RequireComponent(typeof(ModifierHandler))]
     [RequireComponent(typeof(Awareness))]
     [RequireComponent(typeof(Health))]
     public class Actor : MonoBehaviour
     {
-        protected string Name;
+        public string Name { get; set; }
         private List<Modifier> modifiers = new List<Modifier>();
 
-        public ModifierHandler ModifierHandler { get; private set; }
         public Awareness Awareness { get; private set; }
         public Health Health { get; private set; }
+        public AbilityManager AbilityManager { get; set; }
+        public World World { get; set; }
 
 
         // Start is called before the first frame update`
         void Start()
         {
-            ModifierHandler = gameObject.GetComponent<ModifierHandler>();
             Awareness = gameObject.GetComponent<Awareness>();
             Health = gameObject.GetComponent<Health>();
         }

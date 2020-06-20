@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Effects;
+﻿using Effects;
 using UnityEngine;
 
 namespace Components

@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Actors;
 using Conditions;
 using Effects;
-using Engine;
 using UnityEngine;
 
 namespace Modifiers
@@ -20,7 +18,9 @@ namespace Modifiers
         public bool persistent;
         public Condition[] conditions;
         public Effect[] effects;
-
+        public bool targetSender;
+        public bool targetReceiver;
+        [HideInInspector] public World world;
         private bool active;
         private float timeRemaining;
         private float tickTimer;
@@ -45,7 +45,7 @@ namespace Modifiers
                 if (timeRemaining > 0)
                 {
                     active = true;
-                    timeRemaining -= Time.deltaTime * TimeScale.Instance.Current;
+                    timeRemaining -= Time.deltaTime * world.TimeScale;
                 }
                 else if (timeRemaining <= 0)
                 {
@@ -55,7 +55,7 @@ namespace Modifiers
 
             if (ticking && tickTimer > 0)
             {
-                tickTimer -= Time.deltaTime * TimeScale.Instance.Current;
+                tickTimer -= Time.deltaTime * world.TimeScale;
                 tickFrame = false;
             }
             else if (ticking && tickTimer <= 0)

@@ -19,6 +19,5 @@ MonoBehaviour:
   warmup: 0
   cooldown: 0
   passive: 0
-  target: 0
   modifiers:
   - {fileID: 11400000, guid: dd4a19cc6abc9e5458da327bf15f315e, type: 2}
