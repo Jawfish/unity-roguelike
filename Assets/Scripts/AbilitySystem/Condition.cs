@@ -7,7 +7,7 @@ namespace Conditions
     [Serializable]
     public abstract class Condition : ScriptableObject
     {
-        public bool Check(Actor target)
+        public virtual bool Check(Actor target)
         {
             throw new NotImplementedException();
         }

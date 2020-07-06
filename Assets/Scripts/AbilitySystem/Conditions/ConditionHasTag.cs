@@ -1,5 +1,4 @@
-﻿using System;
-using Actors;
+﻿using Actors;
 using UnityEngine;
 
 namespace Conditions
@@ -10,7 +9,7 @@ namespace Conditions
         public string tag;
         public bool invert;
 
-        public bool Check(Actor target) => target.gameObject.CompareTag(tag) && !invert;
+        public override bool Check(Actor target) => target.gameObject.CompareTag(tag) && !invert;
 
     }
 }
